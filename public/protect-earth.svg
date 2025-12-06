@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+  <defs>
+    <linearGradient id="g" x1="0" x2="1">
+      <stop offset="0" stop-color="#2f6b2f" />
+      <stop offset="1" stop-color="#1f7a45" />
+    </linearGradient>
+  </defs>
+  <rect width="100%" height="100%" rx="24" fill="transparent" />
+  <circle cx="100" cy="100" r="86" fill="url(#g)" stroke="#ffffff" stroke-opacity="0.06" stroke-width="3" />
+
+  <!-- simple globe lines -->
+  <path d="M30 100c0-38 31-68 70-68s70 30 70 68-31 68-70 68S30 138 30 100z" fill="none" stroke="#ffe9d6" stroke-width="6" stroke-linecap="round" />
+  <path d="M100 32v136" stroke="#ffe9d6" stroke-width="3" stroke-linecap="round" opacity="0.9" />
+  <path d="M60 50c10 24 20 24 40 0" stroke="#ffe9d6" stroke-width="3" stroke-linecap="round" fill="none" opacity="0.9" />
+  <path d="M60 150c10-24 20-24 40 0" stroke="#ffe9d6" stroke-width="3" stroke-linecap="round" fill="none" opacity="0.9" />
+  <path d="M40 90h120" stroke="#ffe9d6" stroke-width="2.5" opacity="0.8" />
+  <path d="M40 110h120" stroke="#ffe9d6" stroke-width="2.5" opacity="0.8" />
+
+  <!-- small decorative flowers to echo attachment style -->
+  <g transform="translate(20,20) scale(0.6)">
+    <circle cx="120" cy="120" r="6" fill="#fff2d8" />
+  </g>
+</svg>
