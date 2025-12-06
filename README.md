@@ -1,6 +1,6 @@
 # Hara Bhara - Gamified Sustainability Platform
 
-![Hara Bhara Screenshot](./public/README-screenshot.png)
+![Hara Bhara Screenshot](./public/homepage_ss.png)
 
 ## Overview
 I created **Hara Bhara** because I wanted to turn real-world eco-actions into a game. I believe that saving the planet should be fun and rewarding, so I built this platform to convert sustainable habits into "Gbits" (Green bits).
@@ -32,6 +32,12 @@ I made it easy to start the project:
    npm run dev
    ```
 4. Open [http://localhost:3000](http://localhost:3000) to see the app.
+
+---
+## Like This Project?
+
+If this project helped you or you enjoyed it, consider giving it a **star ⭐ on GitHub**!
+It encourages me to do more work like this.
 
 ---
 *Created with ❤️ for a greener future.*
