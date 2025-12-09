@@ -1,15 +1,16 @@
+"use client";
 import Link from "next/link";
 import Card from "@/components/ui/card";
 import Button from "@/components/ui/button";
-import { recentActions, userSummary } from "@/lib/mockData";
+import { useUser } from "@/context/user-context";
 
-function getActionsSummary() {
-    const totalActions = recentActions.length;
-    const totalGbits = recentActions.reduce((sum, a) => sum + a.gbits, 0);
+function getActionsSummary(actions) {
+    const totalActions = actions.length;
+    const totalGbits = actions.reduce((sum, a) => sum + (a.gbits ?? 0), 0);
 
     const byType = {};
-    for (const action of recentActions) {
-        byType[action.type] = (byType[action.type] ?? 0) + action.gbits;
+    for (const action of actions) {
+        byType[action.type] = (byType[action.type] ?? 0) + (action.gbits ?? 0);
     }
 
     const maxByType = Object.values(byType).length
@@ -22,7 +23,8 @@ function getActionsSummary() {
 const weeklySeries = [12, 18, 9, 24, 15, 20, 11];
 
 export default function DailyActionsPage() {
-    const { totalActions, totalGbits, byType, maxByType } = getActionsSummary();
+    const { actions, user } = useUser();
+    const { totalActions, totalGbits, byType, maxByType } = getActionsSummary(actions);
 
     return (
         <div className="mx-auto max-w-6xl px-4 pb-16 pt-10 sm:px-6 lg:px-8 lg:pt-14">
@@ -62,16 +64,8 @@ export default function DailyActionsPage() {
                     title="Earned Gbits"
                     value={`+${totalGbits} GB`}
                 />
-                <Card
-                    eyebrow="Streak"
-                    title="Active days"
-                    value={`${userSummary.streakDays} days`}
-                />
-                <Card
-                    eyebrow="Level"
-                    title="Current level"
-                    value={`Lv ${userSummary.level}`}
-                />
+                <Card eyebrow="Streak" title="Active days" value={`${user?.streakDays ?? 0} days`} />
+                <Card eyebrow="Level" title="Current level" value={`Lv ${user?.level ?? 1}`} />
             </section>
 
             <section className="mt-10 grid gap-6 lg:grid-cols-[minmax(0,1.4fr)_minmax(0,1fr)]">
@@ -129,9 +123,9 @@ export default function DailyActionsPage() {
             </section>
 
             <section className="mt-10 grid gap-4 lg:grid-cols-2">
-                <Card eyebrow="Feed" title="Today&apos;s actions (mock)">
+                <Card eyebrow="Feed" title="Today&apos;s actions">
                     <ul className="mt-3 space-y-2 text-xs text-slate-200">
-                        {recentActions.map((action) => (
+                        {actions.map((action) => (
                             <li
                                 key={action.id}
                                 className="flex items-center justify-between gap-3 rounded-xl border border-emerald-900/60 bg-emerald-950/40 px-3 py-2"

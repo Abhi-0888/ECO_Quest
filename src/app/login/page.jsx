@@ -6,17 +6,22 @@ import { useUser } from "@/context/user-context";
 import Button from "@/components/ui/button";
 
 export default function LoginPage() {
-    const [name, setName] = useState("");
-    const [city, setCity] = useState("");
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
     const { login } = useUser();
     const router = useRouter();
 
-    const handleSubmit = (e) => {
+    const [error, setError] = useState("");
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        if (!name || !city) return;
+        if (!email || !password) return;
 
-        login(name, city);
-        router.push("/dashboard");
+        const res = await login(email, password);
+        if (res?.success) {
+            router.push("/dashboard");
+        } else {
+            setError(res?.message || "Login failed. Please sign up first.");
+        }
     };
 
     return (
@@ -34,43 +39,47 @@ export default function LoginPage() {
                 <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
                     <div className="space-y-4 rounded-md shadow-sm">
                         <div>
-                            <label htmlFor="name" className="text-xs font-medium text-slate-200">
-                                Your Name
+                            <label htmlFor="email" className="text-xs font-medium text-slate-200">
+                                Email
                             </label>
                             <input
-                                id="name"
-                                name="name"
-                                type="text"
+                                id="email"
+                                name="email"
+                                type="email"
                                 required
                                 className="mt-1 block w-full rounded-xl border border-emerald-900/60 bg-slate-950/50 px-3 py-2 text-slate-100 placeholder:text-slate-600 focus:border-emerald-500 focus:outline-none focus:ring-1 focus:ring-emerald-500 sm:text-sm"
-                                placeholder="Enter your name"
-                                value={name}
-                                onChange={(e) => setName(e.target.value)}
+                                placeholder="you@example.com"
+                                value={email}
+                                onChange={(e) => setEmail(e.target.value)}
                             />
                         </div>
                         <div>
-                            <label htmlFor="city" className="text-xs font-medium text-slate-200">
-                                City / Campus
+                            <label htmlFor="password" className="text-xs font-medium text-slate-200">
+                                Password
                             </label>
                             <input
-                                id="city"
-                                name="city"
-                                type="text"
+                                id="password"
+                                name="password"
+                                type="password"
                                 required
                                 className="mt-1 block w-full rounded-xl border border-emerald-900/60 bg-slate-950/50 px-3 py-2 text-slate-100 placeholder:text-slate-600 focus:border-emerald-500 focus:outline-none focus:ring-1 focus:ring-emerald-500 sm:text-sm"
-                                placeholder="e.g. Bengaluru, SRM AP"
-                                value={city}
-                                onChange={(e) => setCity(e.target.value)}
+                                placeholder="Enter your password"
+                                value={password}
+                                onChange={(e) => setPassword(e.target.value)}
                             />
                         </div>
                     </div>
 
                     <Button type="submit" className="w-full text-sm">
-                        Start Earning Gbits
+                        Login
                     </Button>
 
+                    {error && (
+                        <p className="text-center text-xs text-red-300 mt-2">{error} <a href="/beta-signup" className="text-emerald-300 underline">Sign up</a></p>
+                    )}
+
                     <p className="text-center text-xs text-slate-500">
-                        This is a demo. No password required.
+                        New here? <a href="/beta-signup" className="text-emerald-300 underline">Create an account</a>
                     </p>
                 </form>
             </div>

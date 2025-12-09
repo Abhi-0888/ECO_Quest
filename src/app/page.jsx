@@ -1,9 +1,11 @@
+"use client";
 import Link from "next/link";
 import Button from "@/components/ui/button";
 import Card from "@/components/ui/card";
-import { leaderboard, userSummary } from "@/lib/mockData";
+import { useUser } from "@/context/user-context";
 
 export default function Home() {
+    const { user, leaderboard } = useUser();
     return (
         <div className="mx-auto flex min-h-[calc(100vh-4rem)] max-w-6xl flex-col gap-16 px-4 pb-16 pt-10 sm:px-6 lg:px-8 lg:pt-16">
             <section className="grid items-center gap-12 lg:grid-cols-[minmax(0,1.3fr)_minmax(0,1fr)]">
@@ -113,17 +115,14 @@ export default function Home() {
                                 </p>
                                 <ul className="mt-3 space-y-1 text-[11px] text-emerald-200">
                                     <li>
-                                        Streak: <span className="font-semibold">{userSummary.streakDays} days</span>
+                                        Streak: <span className="font-semibold">{user?.streakDays ?? 0} days</span>
                                     </li>
                                     <li>
-                                        Level: <span className="font-semibold">{userSummary.level}</span>
-                                        with <span className="font-semibold">{userSummary.gbitsTotal} Gbits</span>
+                                        Level: <span className="font-semibold">{user?.level ?? 1}</span>
+                                        {" "}with <span className="font-semibold">{(user?.gbitsTotal ?? 0).toLocaleString()} Gbits</span>
                                     </li>
                                     <li>
-                                        Leaderboard: <span className="font-semibold">#{" "}
-                                            {leaderboard.findIndex((entry) => entry.id === "leader-1") + 1}
-                                        </span>{" "}
-                                        in mock community rankings
+                                        Leaderboard: <span className="font-semibold">#{" "}{(leaderboard?.find((e) => e.id === user?.id)?.rank) ?? "-"}</span>
                                     </li>
                                 </ul>
                                 <Link href="/game-layer">

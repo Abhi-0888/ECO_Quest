@@ -4,7 +4,6 @@ import Link from "next/link";
 import { useUser } from "@/context/user-context";
 import Card from "@/components/ui/card";
 import Button from "@/components/ui/button";
-import { leaderboard } from "@/lib/mockData";
 
 function formatDate(dateString) {
     const date = new Date(dateString);
@@ -17,7 +16,7 @@ function formatDate(dateString) {
 }
 
 export default function DashboardPage() {
-    const { user, actions } = useUser();
+    const { user, actions, leaderboard } = useUser();
 
     // If not client-side yet or not logged in, we might show loading or empty state
     // But since we are updating to functional, let's assume if !user we show a message
@@ -166,14 +165,14 @@ export default function DashboardPage() {
 
                     <Card eyebrow="Leaderboard" title="Top green contributors">
                         <ul className="mt-3 space-y-2 text-xs text-slate-200">
-                            {leaderboard.map((entry, index) => (
+                            {leaderboard.map((entry) => (
                                 <li
                                     key={entry.id}
                                     className="flex items-center justify-between gap-2 rounded-xl border border-emerald-900/60 bg-emerald-950/40 px-2.5 py-2"
                                 >
                                     <div className="flex items-center gap-2.5">
                                         <span className="text-[11px] text-slate-400">
-                                            #{index + 1}
+                                            #{entry.rank ?? "-"}
                                         </span>
                                         <div
                                             className={`flex h-7 w-7 items-center justify-center rounded-full text-xs font-semibold text-emerald-950 ${entry.avatarColor}`}
@@ -185,13 +184,16 @@ export default function DashboardPage() {
                                                 {entry.name}
                                             </p>
                                             <p className="text-[11px] text-slate-400">
-                                                {entry.city}  7 {entry.streakDays} day streak
+                                                {entry.city} · {entry.streakDays} day streak
                                             </p>
                                         </div>
                                     </div>
-                                    <p className="text-xs font-semibold text-emerald-300">
-                                        {entry.gbits.toLocaleString()} GB
-                                    </p>
+                                    <div className="text-right">
+                                        <p className="text-xs font-semibold text-emerald-300">
+                                            {entry.gbits.toLocaleString()} GB
+                                        </p>
+                                        <p className="text-[11px] text-slate-400">{entry.rewardsClaimed ?? 0} rewards</p>
+                                    </div>
                                 </li>
                             ))}
                         </ul>

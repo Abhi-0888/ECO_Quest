@@ -1,3 +1,4 @@
+"use client";
 import Link from "next/link";
 import Card from "@/components/ui/card";
 import Button from "@/components/ui/button";
@@ -24,8 +25,6 @@ const sampleQuests = [
     },
 ];
 
-const topLeaders = leaderboard.slice(0, 3);
-const recent = recentActions.slice(0, 3);
 
 export default function GameLayerPage() {
     const { leaderboard, globalFeed, user } = useUser();
@@ -138,7 +137,7 @@ export default function GameLayerPage() {
                     </p>
                 </Card>
 
-                <Card eyebrow="Leaderboard" title="Top contributors">
+                <Card eyebrow="Leaderboard" title="Top green contributors">
                     <ul className="mt-3 space-y-2 text-xs text-slate-200">
                         {topLeaders.map((entry, index) => (
                             <li
@@ -149,7 +148,7 @@ export default function GameLayerPage() {
                                     }`}
                             >
                                 <div className="flex items-center gap-2.5">
-                                    <span className="text-[11px] text-slate-400">#{index + 1}</span>
+                                    <span className="text-[11px] text-slate-400">#{entry.rank ?? index + 1}</span>
                                     <div
                                         className={`flex h-7 w-7 items-center justify-center rounded-full text-xs font-semibold text-emerald-950 ${entry.avatarColor}`}
                                     >
@@ -160,7 +159,7 @@ export default function GameLayerPage() {
                                             {entry.name} {entry.isCurrentUser && "(You)"}
                                         </p>
                                         <p className="text-[11px] text-slate-400">
-                                            {entry.city}  • {entry.streakDays} day streak
+                                            {entry.city}  • {entry.streakDays} day streak • {entry.rewardsClaimed ?? 0} rewards
                                         </p>
                                     </div>
                                 </div>
