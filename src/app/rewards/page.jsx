@@ -78,6 +78,7 @@ const redemptionSteps = [
 export default function RewardsPage() {
     const { user, claimReward, claimedRewards } = useUser();
     const [message, setMessage] = useState(null);
+    const [visibleCodes, setVisibleCodes] = useState({});
 
     const handleClaim = (reward) => {
         setMessage(null);
@@ -179,9 +180,43 @@ export default function RewardsPage() {
                                         <p>Cost: {reward.cost} GB</p>
                                         <p>On: {new Date(reward.claimedAt).toLocaleDateString()}</p>
                                     </div>
-                                    <Button size="sm" variant="secondary" className="h-7 text-xs">
-                                        View Code
-                                    </Button>
+                                    <div className="flex items-center gap-2">
+                                        <Button
+                                            size="sm"
+                                            variant="secondary"
+                                            className="h-7 text-xs"
+                                            onClick={() =>
+                                                setVisibleCodes((prev) => ({
+                                                    ...prev,
+                                                    [reward.id + '-' + index]: !prev[reward.id + '-' + index],
+                                                }))
+                                            }
+                                        >
+                                            {visibleCodes[reward.id + '-' + index] ? "Hide Code" : "View Code"}
+                                        </Button>
+                                        {visibleCodes[reward.id + '-' + index] && (
+                                            <div className="flex items-center gap-2 rounded-md bg-black/60 px-3 py-1 text-xs">
+                                                <span className="font-mono text-sm text-emerald-200">{reward.redeemCode || "—"}</span>
+                                                <Button
+                                                    size="xs"
+                                                    variant="ghost"
+                                                    className="h-6 px-2 text-xs"
+                                                    onClick={async () => {
+                                                        try {
+                                                            await navigator.clipboard.writeText(reward.redeemCode || "");
+                                                            setMessage({ type: "success", text: "Copied code to clipboard" });
+                                                            setTimeout(() => setMessage(null), 1800);
+                                                        } catch (e) {
+                                                            setMessage({ type: "error", text: "Copy failed" });
+                                                            setTimeout(() => setMessage(null), 1800);
+                                                        }
+                                                    }}
+                                                >
+                                                    Copy
+                                                </Button>
+                                            </div>
+                                        )}
+                                    </div>
                                 </div>
                             </div>
                         ))}

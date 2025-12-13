@@ -143,6 +143,19 @@ export function UserProvider({ children }) {
         return arr.map((b) => b.toString(16).padStart(2, "0")).join("");
     };
 
+    // Generate a user-friendly redeem code (client-side)
+    const generateRedeemCode = (length = 8) => {
+        const chars = 'ABCDEFGHJKMNPQRSTUVWXYZ23456789'; // avoid confusing characters
+        const arr = new Uint8Array(length);
+        try {
+            crypto.getRandomValues(arr);
+        } catch (e) {
+            // Fallback to Math.random if crypto unavailable
+            for (let i = 0; i < length; i++) arr[i] = Math.floor(Math.random() * 256);
+        }
+        return Array.from(arr).map((n) => chars[n % chars.length]).join('');
+    };
+
     const login = async (email, password) => {
         const norm = (s) => (s || "").trim().toLowerCase();
         let latestUsers = users;
@@ -275,9 +288,10 @@ export function UserProvider({ children }) {
         }));
 
         // Add to claimed
+        const redeemCode = generateRedeemCode(10);
         setClaimedRewards((prev) => [
             ...prev,
-            { ...reward, claimedAt: new Date().toISOString() },
+            { ...reward, claimedAt: new Date().toISOString(), redeemCode },
         ]);
 
         return { success: true, message: `Redeemed ${reward.title} for ${reward.cost} GB` };
