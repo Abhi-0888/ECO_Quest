@@ -24,7 +24,21 @@ async function ensureDb() {
 async function readDb() {
   await ensureDb();
   const raw = await fs.readFile(dbPath, "utf-8");
-  return JSON.parse(raw);
+  try {
+    return JSON.parse(raw);
+  } catch (e) {
+    // If JSON is invalid, attempt to recover by reinitializing the DB
+    const defaultData = {
+      user: null,
+      users: [],
+      actions: [],
+      claimedRewards: [],
+      leaderboard: [],
+      globalFeed: []
+    };
+    await writeDb(defaultData);
+    return defaultData;
+  }
 }
 
 async function writeDb(data) {

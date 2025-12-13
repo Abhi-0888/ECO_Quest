@@ -1,58 +1,62 @@
 {
-  "user": {
-    "id": "user-1765265603871",
-    "name": "ram",
-    "city": "Abudhabi",
-    "gbitsTotal": 180,
-    "gbitsThisWeek": 80,
-    "treesPlanted": 24,
-    "smartBinDrops": 12,
-    "waterSaves": 18,
-    "level": 7,
-    "nextLevelAt": 1500,
-    "streakDays": 1,
-    "actions": [
-      {
-        "id": "action-1765265612603",
-        "type": "TREE_PLANT",
-        "description": "TREE-QR-NEEM-0142",
-        "location": "Abudhabi",
-        "date": "2025-12-09T07:33:32.603Z",
-        "gbits": 40,
-        "verification": "App Log"
-      }
-    ],
-    "claimedRewards": []
-  },
+  "user": null,
   "users": [
     {
-      "id": "user-1765265603871",
-      "name": "ram",
-      "city": "Abudhabi",
-      "gbitsTotal": 180,
-      "gbitsThisWeek": 80,
-      "treesPlanted": 24,
-      "smartBinDrops": 12,
-      "waterSaves": 18,
-      "level": 7,
-      "nextLevelAt": 1500,
-      "streakDays": 1,
+      "id": "user-1765644059804",
+      "name": "Aarav",
+      "city": "Pune",
+      "email": "aarav@srm.edu",
+      "passwordHash": "ef797c8118f02dfb649607dd5d3f8c7623048c9c063d532cc95c5ed7a898a64f",
+      "gbitsTotal": 200,
+      "gbitsThisWeek": 200,
+      "streakDays": 0,
+      "level": 1,
+      "nextLevelAt": 1000,
+      "treesPlanted": 0,
+      "smartBinDrops": 0,
       "actions": [
         {
-          "id": "action-1765266175880",
+          "id": "action-1765644142293",
           "type": "TREE_PLANT",
           "description": "TREE-QR-NEEM-0142",
-          "location": "Abudhabi",
-          "date": "2025-12-09T07:42:55.880Z",
+          "location": "Pune",
+          "date": "2025-12-13T16:42:22.293Z",
           "gbits": 40,
           "verification": "App Log"
         },
         {
-          "id": "action-1765265612603",
+          "id": "action-1765644099991",
           "type": "TREE_PLANT",
           "description": "TREE-QR-NEEM-0142",
-          "location": "Abudhabi",
-          "date": "2025-12-09T07:33:32.603Z",
+          "location": "Pune",
+          "date": "2025-12-13T16:41:39.991Z",
+          "gbits": 40,
+          "verification": "App Log"
+        },
+        {
+          "id": "action-1765644099674",
+          "type": "TREE_PLANT",
+          "description": "TREE-QR-NEEM-0142",
+          "location": "Pune",
+          "date": "2025-12-13T16:41:39.674Z",
+          "gbits": 40,
+          "verification": "App Log"
+        },
+        {
+          "id": "action-1765644099436",
+          "type": "TREE_PLANT",
+          "description": "TREE-QR-NEEM-0142",
+          "location": "Pune",
+          "date": "2025-12-13T16:41:39.436Z",
+          "gbits": 40,
+          "verification": "App Log"
+        },
+        {
+          "id": "action-1765644098980",
+          "type": "TREE_PLANT",
+          "description": "TREE-QR-NEEM-0142",
+          "location": "Pune",
+          "date": "2025-12-13T16:41:38.980Z",
           "gbits": 40,
           "verification": "App Log"
         }
@@ -64,120 +68,27 @@
   "claimedRewards": [],
   "leaderboard": [
     {
-      "id": "leader-1",
+      "id": "user-1765644059804",
       "name": "Aarav",
       "avatarColor": "bg-emerald-500",
-      "city": "Bengaluru",
-      "gbits": 1240,
-      "streakDays": 26,
-      "rank": 1
-    },
-    {
-      "id": "leader-2",
-      "name": "Maya",
-      "avatarColor": "bg-lime-400",
       "city": "Pune",
-      "gbits": 1180,
-      "streakDays": 19,
-      "rank": 2
-    },
-    {
-      "id": "leader-3",
-      "name": "Kabir",
-      "avatarColor": "bg-teal-400",
-      "city": "Delhi",
-      "gbits": 1040,
-      "streakDays": 17,
-      "rank": 3
-    },
-    {
-      "id": "leader-4",
-      "name": "Leela",
-      "avatarColor": "bg-emerald-300",
-      "city": "Chennai",
-      "gbits": 980,
-      "streakDays": 14,
-      "rank": 4
-    },
-    {
-      "id": "leader-5",
-      "name": "Zara",
-      "avatarColor": "bg-green-300",
-      "city": "Mumbai",
-      "gbits": 930,
-      "streakDays": 12,
-      "rank": 5
-    },
-    {
-      "id": "user-1765265603871",
-      "name": "ram",
-      "avatarColor": "bg-emerald-500",
-      "city": "Abudhabi",
-      "gbits": 220,
-      "streakDays": 1,
+      "gbits": 200,
+      "streakDays": 0,
       "isCurrentUser": true,
       "rewardsClaimed": 0,
-      "rank": 6
+      "rank": 1
     }
   ],
   "globalFeed": [
     {
-      "id": "action-1765265612603",
+      "id": "action-1765644142293",
       "type": "TREE_PLANT",
       "description": "TREE-QR-NEEM-0142",
-      "location": "Abudhabi",
-      "date": "2025-12-09T07:33:32.603Z",
+      "location": "Pune",
+      "date": "2025-12-13T16:42:22.293Z",
       "gbits": 40,
       "verification": "Live Verified",
-      "user": "ram"
-    },
-    {
-      "id": "action-1",
-      "type": "Recycling",
-      "description": "Sorted mixed recyclables into the correct collection point",
-      "location": "Indiranagar Community Drop-off #04",
-      "date": "2025-12-09T07:33:15.519Z",
-      "gbits": 18,
-      "verification": "Community Event"
-    },
-    {
-      "id": "action-2",
-      "type": "Tree Planting",
-      "description": "Logged planting a neem sapling during a drive",
-      "location": "Community Park Plantation Drive",
-      "date": "2025-12-09T04:33:15.520Z",
-      "gbits": 45,
-      "verification": "App Log"
-    },
-    {
-      "id": "action-3",
-      "type": "Water Saving",
-      "description": "Recorded a low-flow shower as part of a daily challenge",
-      "location": "Home",
-      "date": "2025-12-08T11:33:15.520Z",
-      "gbits": 22,
-      "verification": "Survey"
-    },
-    {
-      "id": "action-4",
-      "type": "Transport",
-      "description": "Commuted 8km by cycle instead of car",
-      "location": "Office commute route",
-      "date": "2025-12-08T01:33:15.520Z",
-      "gbits": 35,
-      "verification": "Manual"
-    }
-  ]
-} "Survey"
-    },
-    {
-      "id": "action-4",
-      "type": "Transport",
-      "description": "Commuted 8km by cycle instead of car",
-      "location": "Office commute route",
-      "date": "2025-12-08T01:33:15.520Z",
-      "gbits": 35,
-      "verification": "Manual"
+      "user": "Aarav"
     }
   ]
 }
