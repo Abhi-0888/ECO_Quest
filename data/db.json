@@ -3,22 +3,34 @@
     "id": "user-1765265603871",
     "name": "ram",
     "city": "Abudhabi",
-    "gbitsTotal": 140,
-    "gbitsThisWeek": 40,
+    "gbitsTotal": 180,
+    "gbitsThisWeek": 80,
     "treesPlanted": 24,
     "smartBinDrops": 12,
     "waterSaves": 18,
     "level": 7,
     "nextLevelAt": 1500,
-    "streakDays": 1
+    "streakDays": 1,
+    "actions": [
+      {
+        "id": "action-1765265612603",
+        "type": "TREE_PLANT",
+        "description": "TREE-QR-NEEM-0142",
+        "location": "Abudhabi",
+        "date": "2025-12-09T07:33:32.603Z",
+        "gbits": 40,
+        "verification": "App Log"
+      }
+    ],
+    "claimedRewards": []
   },
   "users": [
     {
       "id": "user-1765265603871",
       "name": "ram",
       "city": "Abudhabi",
-      "gbitsTotal": 140,
-      "gbitsThisWeek": 40,
+      "gbitsTotal": 180,
+      "gbitsThisWeek": 80,
       "treesPlanted": 24,
       "smartBinDrops": 12,
       "waterSaves": 18,
@@ -26,6 +38,15 @@
       "nextLevelAt": 1500,
       "streakDays": 1,
       "actions": [
+        {
+          "id": "action-1765266175880",
+          "type": "TREE_PLANT",
+          "description": "TREE-QR-NEEM-0142",
+          "location": "Abudhabi",
+          "date": "2025-12-09T07:42:55.880Z",
+          "gbits": 40,
+          "verification": "App Log"
+        },
         {
           "id": "action-1765265612603",
           "type": "TREE_PLANT",
@@ -136,6 +157,18 @@
       "date": "2025-12-08T11:33:15.520Z",
       "gbits": 22,
       "verification": "Survey"
+    },
+    {
+      "id": "action-4",
+      "type": "Transport",
+      "description": "Commuted 8km by cycle instead of car",
+      "location": "Office commute route",
+      "date": "2025-12-08T01:33:15.520Z",
+      "gbits": 35,
+      "verification": "Manual"
+    }
+  ]
+} "Survey"
     },
     {
       "id": "action-4",
