@@ -1,229 +1,251 @@
 "use client";
 import Link from "next/link";
+import { motion } from "framer-motion";
+import {
+    TreePine,
+    Zap,
+    Recycle,
+    Trophy,
+    ArrowRight,
+    Users,
+    Globe,
+    Database,
+    Cpu,
+    Sparkles
+} from "lucide-react";
 import Button from "@/components/ui/button";
 import Card from "@/components/ui/card";
 import { useUser } from "@/context/user-context";
 
+const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+        opacity: 1,
+        transition: {
+            staggerChildren: 0.1,
+            delayChildren: 0.1
+        }
+    }
+};
+
+const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+        opacity: 1,
+        y: 0,
+        transition: { duration: 0.5, ease: "easeOut" }
+    }
+};
+
 export default function Home() {
     const { user, leaderboard } = useUser();
+
     return (
-        <div className="mx-auto flex min-h-[calc(100vh-4rem)] max-w-6xl flex-col gap-16 px-4 pb-16 pt-10 sm:px-6 lg:px-8 lg:pt-16">
+        <motion.div
+            variants={containerVariants}
+            initial="hidden"
+            animate="visible"
+            className="mx-auto flex min-h-[calc(100vh-4rem)] max-w-6xl flex-col gap-16 px-4 pb-20 pt-10 sm:px-6 lg:px-8 lg:pt-16"
+        >
+            {/* Hero Section */}
             <section className="grid items-center gap-12 lg:grid-cols-[minmax(0,1.3fr)_minmax(0,1fr)]">
-                <div className="space-y-7">
-                    <div className="inline-flex items-center gap-2 rounded-full border border-green-700/40 bg-green-900/20 px-3 py-1 text-xs text-green-100 shadow-sm shadow-green-900/40">
-                        <span className="inline-flex h-5 w-5 items-center justify-center rounded-full bg-green-700/90 text-[11px] text-green-50">
-                            GB
-                        </span>
-                        <span className="font-medium tracking-wide">
+                <motion.div variants={itemVariants} className="space-y-8">
+                    <div className="inline-flex items-center gap-2 rounded-full border border-emerald-500/30 bg-emerald-500/10 px-4 py-1.5 text-xs font-medium text-emerald-400 backdrop-blur-sm">
+                        <Sparkles className="h-3.5 w-3.5" />
+                        <span className="tracking-wide">
                             Turn real-world eco-actions into Gbits
                         </span>
                     </div>
 
-                    <h1 className="text-balance text-4xl font-semibold tracking-tight text-slate-50 sm:text-5xl lg:text-6xl">
+                    <h1 className="text-balance text-5xl font-bold tracking-tight text-white sm:text-6xl lg:text-7xl">
                         Save the planet.
-                        <span className="block bg-gradient-to-r from-green-400 via-emerald-300 to-cyan-300 bg-clip-text text-transparent">
+                        <span className="block mt-2 bg-gradient-to-r from-emerald-400 via-teal-300 to-cyan-300 bg-clip-text text-transparent">
                             Level up your life.
                         </span>
                     </h1>
 
-                    <p className="max-w-xl text-sm leading-relaxed text-slate-300 sm:text-base">
+                    <p className="max-w-xl text-lg leading-relaxed text-slate-400">
                         Hara Bhara is a gamified sustainability platform that converts everyday
-                        eco-actions into green credits called Gbits. Log recycling, tree
-                        planting, energy saving and low-carbon commutes   every action is
-                        tracked, rewarded and ranked.
+                        eco-actions into green credits called <span className="text-emerald-400 font-semibold">Gbits</span>.
+                        Every tree planted and every bottle recycled counts towards your legacy.
                     </p>
 
                     <div className="flex flex-col gap-4 sm:flex-row sm:items-center">
-                        <div className="flex gap-3">
-                            <Link href="/dashboard">
-                                <Button size="lg">Open demo dashboard</Button>
-                            </Link>
-                            <Link href="/how-it-works">
-                                <Button size="lg" variant="secondary">
-                                    How Hara Bhara works
-                                </Button>
-                            </Link>
-                            <Link href="/daily-actions">
-                                <Button size="lg" variant="secondary">
-                                    Daily actions
-                                </Button>
-                            </Link>
-                        </div>
+                        <Link href="/dashboard">
+                            <Button size="lg" className="w-full sm:w-auto h-14 px-8 text-base">
+                                Open Demo Dashboard
+                                <ArrowRight className="ml-2 h-4 w-4" />
+                            </Button>
+                        </Link>
+                        <Link href="/how-it-works">
+                            <Button size="lg" variant="secondary" className="w-full sm:w-auto h-14 px-8 text-base">
+                                View Quest Log
+                            </Button>
+                        </Link>
                     </div>
 
-                    <dl className="mt-4 grid gap-4 text-xs text-slate-300 sm:grid-cols-3">
-                        <div className="space-y-1">
-                            <dt className="text-[11px] uppercase tracking-[0.18em] text-green-400/80">
-                                Verified actions
-                            </dt>
-                            <dd className="text-lg font-semibold text-green-200">50k+</dd>
-                        </div>
-                        <div className="space-y-1">
-                            <dt className="text-[11px] uppercase tracking-[0.18em] text-green-400/80">
-                                Partner campuses
-                            </dt>
-                            <dd className="text-lg font-semibold text-green-200">120</dd>
-                        </div>
-                        <div className="space-y-1">
-                            <dt className="text-[11px] uppercase tracking-[0.18em] text-green-400/80">
-                                Average weekly streak
-                            </dt>
-                            <dd className="text-lg font-semibold text-green-200">9 days</dd>
-                        </div>
-                    </dl>
-                </div>
-
-                <div className="relative">
-                    <div className="pointer-events-none absolute -left-16 -top-20 h-40 w-40 rounded-full bg-green-600/20 blur-3xl" />
-                    <div className="pointer-events-none absolute -right-10 bottom-0 h-40 w-40 rounded-full bg-emerald-500/10 blur-3xl" />
-
-                    <div className="relative rounded-3xl border border-green-900/80 bg-black/60 p-4 shadow-[0_0_120px_-40px_rgba(34,197,94,0.8)] backdrop-blur-xl">
-                        <div className="flex items-center justify-between gap-2 border-b border-green-900/70 pb-3">
-                            <div>
-                                <p className="text-xs text-slate-400">Live Gbits balance</p>
-                                <p className="text-3xl font-semibold text-green-400">1,240</p>
-                            </div>
-                            <div className="flex flex-col items-end text-xs text-green-200">
-                                <span className="inline-flex items-center gap-1 rounded-full bg-green-600/20 px-2 py-1 text-[11px]">
-                                    <span className="h-1.5 w-1.5 rounded-full bg-green-500" />
-                                    Green streak 26 days
-                                </span>
-                                <span className="mt-1 text-[11px] text-slate-400">
-                                    +180 Gbits this week
-                                </span>
-                            </div>
-                        </div>
-
-                        <div className="mt-4 grid gap-3 sm:grid-cols-2">
-                            <Card
-                                eyebrow="Daily actions"
-                                title="Log, repeat, grow"
-                                className="hover:-translate-y-0.5 hover:border-green-500/70 hover:shadow-green-900/80 transition"
-                            >
-                                Log your eco-actions - from recycling and tree care to
-                                energy saving and low-carbon travel - and watch your Gbits grow
-                                over time.
-                            </Card>
-                            <Card
-                                eyebrow="Game layer"
-                                title="Quests, streaks & leagues"
-                                className="hover:-translate-y-0.5 hover:border-emerald-400/70 hover:shadow-emerald-900/80 transition"
-                            >
-                                <p>
-                                    Daily quests, campus leagues and city-wide events turn
-                                    sustainability into a social, repeatable habit loop.
+                    <div className="pt-4 grid grid-cols-3 gap-8">
+                        {[
+                            { label: "Verified Actions", value: "50k+" },
+                            { label: "Partner Campuses", value: "120" },
+                            { label: "Weekly Streak", value: "9 days" }
+                        ].map((stat, i) => (
+                            <div key={i} className="space-y-1">
+                                <p className="text-[10px] uppercase tracking-[0.2em] text-emerald-500/70 font-bold">
+                                    {stat.label}
                                 </p>
-                                <ul className="mt-3 space-y-1 text-[11px] text-emerald-200">
-                                    <li>
-                                        Streak: <span className="font-semibold">{user?.streakDays ?? 0} days</span>
-                                    </li>
-                                    <li>
-                                        Level: <span className="font-semibold">{user?.level ?? 1}</span>
-                                        {" "}with <span className="font-semibold">{(user?.gbitsTotal ?? 0).toLocaleString()} Gbits</span>
-                                    </li>
-                                    <li>
-                                        Leaderboard: <span className="font-semibold">#{" "}{(leaderboard?.find((e) => e.id === user?.id)?.rank) ?? "-"}</span>
-                                    </li>
-                                </ul>
-                                <Link href="/game-layer">
-                                    <Button size="sm" variant="secondary" className="mt-3">
-                                        Open game layer
-                                    </Button>
-                                </Link>
-                            </Card>
+                                <p className="text-2xl font-bold text-white">{stat.value}</p>
+                            </div>
+                        ))}
+                    </div>
+                </motion.div>
+
+                {/* Dashboard Preview Card */}
+                <motion.div
+                    variants={itemVariants}
+                    className="relative"
+                >
+                    <div className="absolute -inset-1 rounded-[2rem] bg-gradient-to-tr from-emerald-500/20 via-cyan-500/10 to-transparent blur-2xl" />
+                    <div className="glass-card relative border-emerald-500/20 bg-slate-900/60 p-6 shadow-2xl">
+                        <div className="flex items-center justify-between pb-6 border-b border-emerald-500/10">
+                            <div>
+                                <p className="text-[11px] font-medium uppercase tracking-wider text-slate-500">Live Gbits balance</p>
+                                <div className="flex items-end gap-2">
+                                    <p className="text-4xl font-black text-white">1,240</p>
+                                    <span className="mb-1.5 text-xs font-bold text-emerald-400">+18% LW</span>
+                                </div>
+                            </div>
+                            <div className="flex flex-col items-end">
+                                <span className="inline-flex items-center gap-1.5 rounded-full bg-emerald-500/10 px-3 py-1 text-[11px] font-bold text-emerald-400 border border-emerald-500/20">
+                                    <span className="relative flex h-2 w-2">
+                                        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                                        <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+                                    </span>
+                                    Streak: 26 Days
+                                </span>
+                            </div>
                         </div>
 
+                        <div className="mt-8 grid gap-4">
+                            <Card
+                                eyebrow="Daily Habit"
+                                title="Sustainable Commute"
+                                className="!p-4 bg-emerald-500/5 hover:bg-emerald-500/10 transition-colors"
+                            >
+                                <div className="flex items-center justify-between">
+                                    <p className="text-xs text-slate-400">Log your walk or cycle today</p>
+                                    <div className="h-8 w-8 rounded-full bg-emerald-500/20 flex items-center justify-center">
+                                        <Zap className="h-4 w-4 text-emerald-400" />
+                                    </div>
+                                </div>
+                            </Card>
+
+                            <Card
+                                eyebrow="Current Quest"
+                                title="The Green Legion"
+                                className="!p-4"
+                            >
+                                <div className="space-y-4">
+                                    <div className="flex items-center justify-between text-[11px]">
+                                        <span className="text-slate-400">Leaderboard Rank</span>
+                                        <span className="text-emerald-400 font-bold">#14 (Apex League)</span>
+                                    </div>
+                                    <div className="h-1.5 w-full bg-slate-800 rounded-full overflow-hidden">
+                                        <div className="h-full bg-emerald-500 w-[78%] rounded-full shadow-[0_0_10px_rgba(16,185,129,0.5)]" />
+                                    </div>
+                                    <Link href="/game-layer" className="block">
+                                        <Button variant="secondary" size="sm" className="w-full">
+                                            Return to Quests
+                                        </Button>
+                                    </Link>
+                                </div>
+                            </Card>
+                        </div>
+                    </div>
+                </motion.div>
+            </section>
+
+            {/* Features Grid */}
+            <section className="space-y-12">
+                <motion.div variants={itemVariants} className="text-center space-y-4">
+                    <h2 className="text-3xl font-bold text-white">Engineered for real impact</h2>
+                    <p className="mx-auto max-w-2xl text-slate-400">
+                        We've built a multi-layered ecosystem that makes sustainability
+                        not just a choice, but an engaging daily ritual.
+                    </p>
+                </motion.div>
+
+                <div className="grid gap-6 md:grid-cols-3">
+                    {[
+                        {
+                            icon: Cpu,
+                            eyebrow: "Hardware Layer",
+                            title: "IoT-Verified Actions",
+                            desc: "Smart bins and wearable GreenBands log proof of action before credits are issued."
+                        },
+                        {
+                            icon: Trophy,
+                            eyebrow: "Behavior Design",
+                            title: "Gamified Experience",
+                            desc: "Real-time leaderboards and social streaks turn climate action into a social habit loop."
+                        },
+                        {
+                            icon: Database,
+                            eyebrow: "Impact Analytics",
+                            title: "For Institutions",
+                            desc: "Campuses and NGOs can track collective progress and audit CSR-ready evidence."
+                        }
+                    ].map((feature, i) => (
+                        <Card key={i} eyebrow={feature.eyebrow} title={feature.title} className="group">
+                            <div className="mb-4 h-10 w-10 rounded-lg bg-emerald-500/10 flex items-center justify-center group-hover:bg-emerald-500/20 transition-colors">
+                                <feature.icon className="h-5 w-5 text-emerald-400" />
+                            </div>
+                            <p className="text-xs leading-relaxed text-slate-400">
+                                {feature.desc}
+                            </p>
+                        </Card>
+                    ))}
+                </div>
+            </section>
+
+            {/* Values Section */}
+            <section className="relative overflow-hidden rounded-[2.5rem] border border-emerald-500/20 bg-slate-900/40 p-12 lg:p-20">
+                <div className="absolute right-0 top-0 -mr-20 -mt-20 h-80 w-80 rounded-full bg-emerald-500/10 blur-[100px]" />
+                <div className="relative grid gap-12 lg:grid-cols-2 lg:items-center">
+                    <div className="space-y-6">
+                        <h2 className="text-4xl font-bold text-white">Why teams choose Hara Bhara</h2>
+                        <div className="space-y-4">
+                            {[
+                                { title: "Verified Impact", desc: "Every Gbit is backed by auditable data." },
+                                { title: "Behavioral Science", desc: "Designed with habit loops that actually stick." },
+                                { title: "Developer First", desc: "Easy to integrate with our robust REST APIs." }
+                            ].map((item, i) => (
+                                <div key={i} className="flex gap-4">
+                                    <div className="mt-1 h-5 w-5 rounded-full bg-emerald-500/20 flex items-center justify-center flex-shrink-0">
+                                        <div className="h-1.5 w-1.5 rounded-full bg-emerald-500" />
+                                    </div>
+                                    <div>
+                                        <h4 className="font-semibold text-white">{item.title}</h4>
+                                        <p className="text-sm text-slate-400">{item.desc}</p>
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+                        <Button variant="secondary" className="px-8 mt-4">
+                            Contact our Team
+                        </Button>
+                    </div>
+
+                    <div className="relative aspect-square lg:aspect-auto lg:h-[400px]">
+                        <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent z-10" />
+                        <img
+                            src="/jhad-pic.jpg"
+                            alt="Sustainability Impact"
+                            className="h-full w-full object-cover rounded-3xl opacity-60 grayscale hover:grayscale-0 transition-all duration-700"
+                        />
                     </div>
                 </div>
             </section>
-
-            <section className="space-y-6">
-                <div>
-                    <p className="text-xs uppercase tracking-[0.18em] text-green-400/80">
-                        Why Gbit feels different
-                    </p>
-                    <h2 className="text-lg font-semibold text-slate-50 sm:text-xl">
-                        Hybrid verification + social play + institutional visibility.
-                    </h2>
-                    <p className="max-w-3xl text-sm text-slate-400">
-                        Instead of relying only on self-reporting, Gbit blends smart hardware,
-                        mobile gameplay and an impact dashboard so actions are trustworthy,
-                        fun to share and easy to audit.
-                    </p>
-                </div>
-                <div className="grid gap-4 md:grid-cols-3">
-                    <Card eyebrow="Hardware layer" title="IoT-verified actions">
-                        Smart recycling bins, GPS-tagged trees, QR eco-stations and wearable
-                        GreenBands log proof (geo-tags, images, telemetry) before Gbits are issued.
-                    </Card>
-                    <Card eyebrow="Gamified app" title="Earn, share, repeat">
-                        Real-time sync to the mobile app gives users Gbit balances,
-                        leaderboards, and social shout-outs so sustainability feels like a daily quest.
-                    </Card>
-                    <Card eyebrow="Impact dashboard" title="For colleges & NGOs">
-                        Institutions track collective progress, launch challenges and export
-                        CSR-ready evidence from the same verified hardware events.
-                    </Card>
-                </div>
-            </section>
-
-            <section className="space-y-8">
-                <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
-                    <div>
-                        <h2 className="text-lg font-semibold text-slate-50 sm:text-xl">
-                            Why teams choose Hara Bhara
-                        </h2>
-                        <p className="max-w-xl text-sm text-slate-400">
-                            Designed for campuses, residential communities and climate-first
-                            companies that want sustainability to feel joyful, not preachy.
-                        </p>
-                    </div>
-                    <Link
-                        href="/contact"
-                        className="text-xs font-medium text-green-400 hover:text-green-300"
-                    >
-                        Contact us
-                    </Link>
-                </div>
-
-                <div className="grid gap-4 md:grid-cols-3">
-                    <Card
-                        eyebrow="Verified impact"
-                        title="Impact analytics"
-                    >
-                        Turn everyday eco-actions into clean, analysable data so you can
-                        see progress across people, teams and locations.
-                    </Card>
-                    <Card
-                        eyebrow="Behavior design"
-                        title="Habit loops that stick"
-                    >
-                        Points, streaks, levels and leaderboards driven by behavioral
-                        science, configured for your community.
-                    </Card>
-                    <Card
-                        eyebrow="Plug-and-play"
-                        title="APIs and SDKs first"
-                    >
-                        Use our REST and webhook-based APIs to connect existing apps,
-                        access Gbit balances, and trigger real rewards.
-                    </Card>
-                </div>
-            </section>
-
-            {/* Decor image with edge masking */}
-            {/* Decor image with edge masking */}
-            <div className="mt-16 flex w-full justify-center opacity-90 mix-blend-screen pointer-events-none select-none pb-8">
-                <div className="relative overflow-hidden w-full max-w-4xl flex justify-center">
-                    <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent z-10 h-full w-full"></div>
-                    <div className="absolute inset-0 bg-gradient-to-r from-slate-950 via-transparent to-slate-950 z-10 h-full w-full"></div>
-                    <img
-                        src="/jhad-pic.jpg"
-                        alt="Hara Bhara Tree"
-                        className="h-auto max-h-[400px] w-auto max-w-full object-contain opacity-80"
-                    />
-                </div>
-            </div>
-        </div>
+        </motion.div>
     );
 }
