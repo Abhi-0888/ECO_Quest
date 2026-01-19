@@ -11,6 +11,7 @@ export function UserProvider({ children }) {
     const [users, setUsers] = useState([]);
     const [leaderboard, setLeaderboard] = useState([]);
     const [globalFeed, setGlobalFeed] = useState([]);
+    const [activeQuests, setActiveQuests] = useState([]);
     const initializedRef = useRef(false);
 
     const persist = async (partial) => {
@@ -206,7 +207,7 @@ export function UserProvider({ children }) {
             const res = await fetch("/api/db");
             const data = await res.json();
             if (Array.isArray(data.users)) latest = data.users;
-        } catch {}
+        } catch { }
         const exists = latest.find((u) => norm(u.email) === norm(trimmed.email));
         if (exists) return { success: false, message: "Email already registered. Please log in." };
         const passwordHash = await sha256(password || "");
@@ -311,6 +312,8 @@ export function UserProvider({ children }) {
                 addGbits,
                 claimReward,
                 signup,
+                activeQuests,
+                setActiveQuests,
             }}
         >
             {children}

@@ -16,6 +16,7 @@ const navItems = [
 
 const protectedNavItems = [
     { href: "/dashboard", label: "Dashboard" },
+    { href: "/quests", label: "Quests" },
     { href: "/scan", label: "Verify" },
     { href: "/rewards", label: "Market" },
 ];
@@ -65,8 +66,8 @@ export function Navbar() {
     return (
         <header
             className={`sticky top-0 z-50 w-full transition-all duration-500 ${scrolled
-                    ? "border-b border-emerald-500/10 bg-slate-950/80 backdrop-blur-xl py-2"
-                    : "bg-transparent py-4"
+                ? "border-b border-emerald-500/10 bg-slate-950/80 backdrop-blur-xl py-2"
+                : "bg-transparent py-4"
                 }`}
         >
             <div className="mx-auto flex max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">

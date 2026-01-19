@@ -142,6 +142,24 @@ export default function DashboardPage() {
                 </div>
 
                 <div className="space-y-4">
+                    <Card eyebrow="Quest of the day" title="Smart Commute Mission">
+                        <div className="mt-2 space-y-3">
+                            <p className="text-xs text-slate-400">
+                                Travel at least 2km by walking or cycling today to earn a bonus streak multiplier.
+                            </p>
+                            <div className="flex items-center justify-between">
+                                <span className="text-[11px] font-medium text-emerald-400">Progress: 1.2 / 2.0 km</span>
+                                <span className="text-[11px] text-slate-500">60%</span>
+                            </div>
+                            <div className="h-1.5 w-full overflow-hidden rounded-full bg-emerald-950/70">
+                                <div className="h-full bg-emerald-500" style={{ width: "60%" }} />
+                            </div>
+                            <Link href="/scan" className="block">
+                                <Button size="sm" variant="secondary" className="w-full">Update Progress</Button>
+                            </Link>
+                        </div>
+                    </Card>
+
                     <Card eyebrow="Level" title={`Level ${user.level}`}>
                         <div className="mt-2">
                             <div className="flex items-center justify-between text-[11px] text-slate-400">
